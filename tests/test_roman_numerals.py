@@ -15,8 +15,11 @@ def test_X_returns_10():
 def test_L_returns_50():
     assert from_roman("L") == 50
 
-def test_L_returns_100():
+def test_C_returns_100():
     assert from_roman("C") == 100
+
+def test_D_returns_500():
+    assert from_roman("D") == 500
 
 # Step 2: Repetition ("II"→2)
 
