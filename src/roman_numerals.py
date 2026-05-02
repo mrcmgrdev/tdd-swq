@@ -12,5 +12,7 @@ def from_roman(roman: str) -> int:
         return 100
     elif roman == "D":
         return 500
+    elif roman == "M":
+        return 1000
     
     return 0
