@@ -6,5 +6,7 @@ def from_roman(roman: str) -> int:
         return 5
     elif roman == "X":
         return 10
+    elif roman == "L":
+        return 50
     
     return 0
