@@ -76,3 +76,10 @@ def test_empty_string_raises_value_error():
         from_roman("")
 
 # Step 7: Out of range (4000 = "MMMM" not valid, no negative representation)
+def test_MMMM_raises_value_error():
+    with pytest.raises(ValueError):
+        from_roman("MMMM")
+
+def test_invalid_characters_raises_value_error():
+    with pytest.raises(ValueError):
+        from_roman("ABC")
