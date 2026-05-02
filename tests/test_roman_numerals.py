@@ -29,6 +29,14 @@ def test_II_returns_2():
     assert from_roman("II") == 2
 
 # Step 3: Addition ("VI"→6, "LX"→60, "DC"→600)
+def test_VI_returns_6():
+    assert from_roman("VI") == 6
+    
+def test_LX_returns_60():
+    assert from_roman("LX") == 60
+
+def test_DC_returns_600():
+    assert from_roman("DC") == 600
 
 # Step 4: Subtraction ("IV"→4, "IX"→9, "XL"→40, "XC"→90, "CD"→400, "CM"→900)
 
