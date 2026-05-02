@@ -58,6 +58,17 @@ def test_CM_returns_900():
     assert from_roman("CM") == 900
 
 # Step 5: Complex numbers ("XLII"→42, "XCIX"→99, "MMXIII"→2013, "MMMCMXCIX"→3999)
+def test_XLII_returns_42():
+    assert from_roman("XLII") == 42
+
+def test_XCIX_returns_99():
+    assert from_roman("XCIX") == 99
+
+def test_MMXIII_returns_2013():
+    assert from_roman("MMXIII") == 2013
+
+def test_MMMCMXCIX_returns_3999():
+    assert from_roman("MMMCMXCIX") == 3999
 
 # Step 6: Empty string / invalid
 
