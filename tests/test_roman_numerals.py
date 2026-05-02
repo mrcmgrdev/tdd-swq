@@ -42,6 +42,21 @@ def test_DC_returns_600():
 def test_IV_returns_4():
     assert from_roman("IV") == 4
 
+def test_IX_returns_9():
+    assert from_roman("IX") == 9
+
+def test_XL_returns_40():
+    assert from_roman("XL") == 40
+
+def test_XC_returns_90():
+    assert from_roman("XC") == 90
+
+def test_CD_returns_400():
+    assert from_roman("CD") == 400
+
+def test_CM_returns_900():
+    assert from_roman("CM") == 900
+
 # Step 5: Complex numbers ("XLII"→42, "XCIX"→99, "MMXIII"→2013, "MMMCMXCIX"→3999)
 
 # Step 6: Empty string / invalid
