@@ -71,5 +71,8 @@ def test_MMMCMXCIX_returns_3999():
     assert from_roman("MMMCMXCIX") == 3999
 
 # Step 6: Empty string / invalid
+def test_empty_string_raises_value_error():
+    with pytest.raises(ValueError):
+        from_roman("")
 
 # Step 7: Out of range (4000 = "MMMM" not valid, no negative representation)
