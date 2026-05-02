@@ -12,6 +12,9 @@ def test_V_returns_5():
 def test_X_returns_10():
     assert from_roman("X") == 10
 
+def test_L_returns_50():
+    assert from_roman("L") == 50
+
 # Step 2: Repetition ("II"→2)
 
 # Step 3: Addition ("VI"→6, "LX"→60, "DC"→600)
