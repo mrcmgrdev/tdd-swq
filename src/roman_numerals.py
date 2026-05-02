@@ -1,18 +1,7 @@
 def from_roman(roman: str) -> int:
     """Convert a Roman numeral string to an integer."""
-    if roman == "I":
-        return 1
-    elif roman == "V":
-        return 5
-    elif roman == "X":
-        return 10
-    elif roman == "L":
-        return 50
-    elif roman == "C":
-        return 100
-    elif roman == "D":
-        return 500
-    elif roman == "M":
-        return 1000
-    
-    return 0
+    values = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+    result = 0
+    for char in roman:
+        result += values[char]
+    return result
