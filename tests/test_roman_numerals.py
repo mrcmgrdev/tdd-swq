@@ -2,84 +2,73 @@ import pytest
 from src.roman_numerals import from_roman
 
 
-# Step 1: Basic symbols ("I"→1, "V"→5, "X"→10, "L"→50, "C"→100, "D"→500, "M"→1000)
-def test_I_returns_1():
-    assert from_roman("I") == 1
+# Step 1: Basic symbols
+@pytest.mark.parametrize("roman, expected", [
+    ("I", 1),
+    ("V", 5),
+    ("X", 10),
+    ("L", 50),
+    ("C", 100),
+    ("D", 500),
+    ("M", 1000),
+])
+def test_basic_symbols(roman, expected):
+    assert from_roman(roman) == expected
 
-def test_V_returns_5():
-    assert from_roman("V") == 5
 
-def test_X_returns_10():
-    assert from_roman("X") == 10
+# Step 2: Repetition
+@pytest.mark.parametrize("roman, expected", [
+    ("II", 2),
+])
+def test_repetition(roman, expected):
+    assert from_roman(roman) == expected
 
-def test_L_returns_50():
-    assert from_roman("L") == 50
 
-def test_C_returns_100():
-    assert from_roman("C") == 100
+# Step 3: Addition
+@pytest.mark.parametrize("roman, expected", [
+    ("VI", 6),
+    ("LX", 60),
+    ("DC", 600),
+])
+def test_addition(roman, expected):
+    assert from_roman(roman) == expected
 
-def test_D_returns_500():
-    assert from_roman("D") == 500
 
-def test_M_returns_1000():
-    assert from_roman("M") == 1000
+# Step 4: Subtraction
+@pytest.mark.parametrize("roman, expected", [
+    ("IV", 4),
+    ("IX", 9),
+    ("XL", 40),
+    ("XC", 90),
+    ("CD", 400),
+    ("CM", 900),
+])
+def test_subtraction(roman, expected):
+    assert from_roman(roman) == expected
 
-# Step 2: Repetition ("II"→2)
-def test_II_returns_2():
-    assert from_roman("II") == 2
 
-# Step 3: Addition ("VI"→6, "LX"→60, "DC"→600)
-def test_VI_returns_6():
-    assert from_roman("VI") == 6
+# Step 5: Complex numbers
+@pytest.mark.parametrize("roman, expected", [
+    ("XLII", 42),
+    ("XCIX", 99),
+    ("MMXIII", 2013),
+    ("MMMCMXCIX", 3999),
+])
+def test_complex_numbers(roman, expected):
+    assert from_roman(roman) == expected
 
-def test_LX_returns_60():
-    assert from_roman("LX") == 60
-
-def test_DC_returns_600():
-    assert from_roman("DC") == 600
-
-# Step 4: Subtraction ("IV"→4, "IX"→9, "XL"→40, "XC"→90, "CD"→400, "CM"→900)
-def test_IV_returns_4():
-    assert from_roman("IV") == 4
-
-def test_IX_returns_9():
-    assert from_roman("IX") == 9
-
-def test_XL_returns_40():
-    assert from_roman("XL") == 40
-
-def test_XC_returns_90():
-    assert from_roman("XC") == 90
-
-def test_CD_returns_400():
-    assert from_roman("CD") == 400
-
-def test_CM_returns_900():
-    assert from_roman("CM") == 900
-
-# Step 5: Complex numbers ("XLII"→42, "XCIX"→99, "MMXIII"→2013, "MMMCMXCIX"→3999)
-def test_XLII_returns_42():
-    assert from_roman("XLII") == 42
-
-def test_XCIX_returns_99():
-    assert from_roman("XCIX") == 99
-
-def test_MMXIII_returns_2013():
-    assert from_roman("MMXIII") == 2013
-
-def test_MMMCMXCIX_returns_3999():
-    assert from_roman("MMMCMXCIX") == 3999
 
 # Step 6: Empty string / invalid
 def test_empty_string_raises_value_error():
     with pytest.raises(ValueError):
         from_roman("")
 
-# Step 7: Out of range (4000 = "MMMM" not valid, no negative representation)
-def test_MMMM_raises_value_error():
-    with pytest.raises(ValueError):
-        from_roman("MMMM")
 
-def test_invalid_characters_raises_value_error():
+# Step 7: Out of range and invalid characters
+@pytest.mark.parametrize("roman", [
+    "MMMM",
+    "ABC",
+])
+def test_invalid_input_raises_value_error(roman):
     with pytest.raises(ValueError):
-        from_roman("ABC")
+        from_roman(roman)
